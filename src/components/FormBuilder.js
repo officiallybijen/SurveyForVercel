@@ -9,6 +9,7 @@ import FormElement from "./FormElement";
 import PreviewForm, { hell } from "./PreviewForm";
 
 const FormBuilder = () => {
+  
   const formElements = useSelector((state) => state.formElements);
   const dispatch = useDispatch();
 
@@ -19,6 +20,8 @@ const FormBuilder = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [error, setError] = useState(false);
 
+  
+
   const createQuestion = (type) => {
     setShowQuestionType(false);
     const newQuestion = generateFormType(type);
@@ -26,6 +29,7 @@ const FormBuilder = () => {
   };
 
   const nextStep = () => {
+    setCreateForm(true)
     if (
       (activeStep === 2 && formElements.length < 1) ||
       (activeStep === 1 && title === "")
