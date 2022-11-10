@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { url } from "../url";
 
 const Answer = () => {
     const [allForm, setAllForm] = useState();
 
     useEffect(() => {
-      fetch("http://127.0.0.1:8000/api/allform", {
+      fetch(url+"/api/allform", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         "ngrok-skip-browser-warning": "1",

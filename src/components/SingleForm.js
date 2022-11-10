@@ -6,6 +6,7 @@ import surveyJson from "../questions";
 
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { url } from "../url";
 
 StylesManager.applyTheme("defaultV2");
 
@@ -15,7 +16,7 @@ const SingleForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/formquestion/" + form_id, {
+    fetch(url+"/api/formquestion/" + form_id, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +32,7 @@ const SingleForm = () => {
       });
   }, []);
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/formdetail/" + form_id, {
+    fetch(url+"/api/formdetail/" + form_id, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +69,7 @@ const SingleForm = () => {
     results = JSON.stringify(results);
     console.log("where we");
     console.log(results);
-    fetch("http://127.0.0.1:8000/api/answer", {
+    fetch(url+"/api/answer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: results,

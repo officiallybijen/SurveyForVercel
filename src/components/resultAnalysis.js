@@ -3,6 +3,7 @@ import "survey-analytics/survey.analytics.min.css";
 import { Model } from "survey-core";
 import { VisualizationPanel } from "survey-analytics";
 import Navbar from "./Navbar";
+import { url } from "../url";
 
 export default function ResultAnalysis() {
   const [questions, setQuestions] = useState(null);
@@ -21,7 +22,7 @@ export default function ResultAnalysis() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://127.0.0.1:8000/api/formquestion/" + 1, {
+    fetch(url+"/api/formquestion/" + 1, {
       method: "GET",
       headers: { "Content-Type": "application/json",
       "ngrok-skip-browser-warning": "1",

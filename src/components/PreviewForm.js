@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import { SurveyPDF } from "survey-pdf";
 import { addResult } from "../redux/actions";
+import { url } from "../url";
 
 StylesManager.applyTheme("modern");
 
@@ -46,7 +47,7 @@ function PreviewForm({ title, description, setCreateForm }) {
 
   hell = () => {
     let ques = { title: title, description: description };
-    fetch("http://127.0.0.1:8000/api/form", {
+    fetch(url+"/api/form", {
       method: "POST",
       headers: { "Content-Type": "application/json",
       "ngrok-skip-browser-warning": "1",
@@ -61,7 +62,7 @@ function PreviewForm({ title, description, setCreateForm }) {
 
         let temp = formElements.map((item) => {
           item["SurveyForm_id"] = data.id;
-          fetch("http://127.0.0.1:8000/api/question", {
+          fetch(url+"/api/question", {
             method: "POST",
             headers: { "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "1",
